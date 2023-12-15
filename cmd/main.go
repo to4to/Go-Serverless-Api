@@ -8,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/to4to/go-serverless-api/pkg/handlers"
 	"os"
+	"github.com/to4to/go-serverless-api/pkg/handlers"
 	//"github.com/aws/aws-sdk-go/service/lambda"
 )
 
@@ -35,6 +36,7 @@ func handler(req events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse
 		Region: aws.String(region),
 	})
 
+
 	if err != nil {
 		return nil, err
 	}
@@ -44,5 +46,7 @@ func handler(req events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse
 
 	case "GET":
 		return handlers.GetUser(req, tableName, dynaClient)
+	case "POST":
+
 	}
 }
