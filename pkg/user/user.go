@@ -24,3 +24,13 @@ func CreateUser(){
 func UpdateMethod(){
 
 }
+
+
+
+func DeleteUser() error{
+
+
+
+
+	return nil
+}
