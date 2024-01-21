@@ -1,36 +1,25 @@
 package user
 
+var ()
 
-var(
-
-)
-
-
-func FetchUser()(){
+func FetchUser() {
 
 }
 
-
-//Fetching Multiple USers
-func FetchUsers(){
-
-}
-
-
-func CreateUser(){
+// Fetching Multiple USers
+func FetchUsers() {
 
 }
 
-func UpdateMethod(){
+func CreateUser() {
 
 }
 
+func UpdateMethod() {
 
+}
 
-func DeleteUser() error{
-
-
-
+func DeleteUser() error {
 
 	return nil
 }

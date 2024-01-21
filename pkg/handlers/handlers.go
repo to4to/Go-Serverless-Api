@@ -2,6 +2,7 @@ package handlers
 
 
 
+var ErrorMethodNotAllowed="method not allowed"
 
 func GetUser(){}
 
