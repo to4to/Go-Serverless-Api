@@ -1,6 +1,10 @@
 package handlers
 
-import "github.com/aws/aws-lambda-go/events"
+import (
+	"net/http"
+
+	"github.com/aws/aws-lambda-go/events"
+)
 
 
 
@@ -23,6 +27,6 @@ func DeleteUser(){
 
 func UnhandledMethod()(*events.APIGatewayProxyResponse,error){
 
-
+return apiResponse(http.StatusMethodNotAllowed,ErrorMethodNotAllowed)
 
 }
