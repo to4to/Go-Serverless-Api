@@ -10,6 +10,11 @@ import (
 
 var ErrorMethodNotAllowed="method not allowed"
 
+
+type ErrorBody struct{
+	ErrorMsg *string `json:"error,ommitempty" `
+}
+
 func GetUser(){}
 
 
