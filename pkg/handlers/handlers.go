@@ -15,7 +15,11 @@ type ErrorBody struct{
 	ErrorMsg *string `json:"error,ommitempty" `
 }
 
-func GetUser(){}
+func GetUser(req events.APIGatewayProxyRequest,tableName ){
+
+
+
+}
 
 
 
