@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 )
 
 
@@ -15,7 +16,7 @@ type ErrorBody struct{
 	ErrorMsg *string `json:"error,ommitempty" `
 }
 
-func GetUser(req events.APIGatewayProxyRequest,tableName ){
+func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.Dyna)(){
 
 
 
