@@ -30,9 +30,11 @@ func CreateUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dy
 
 
 
-func UpdateUser(){}
+func UpdateUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
+(*events.APIGatewayProxyResponse,error){}
 
-func DeleteUser(){
+func DeleteUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
+(*events.APIGatewayProxyResponse,error){
 
 }
 
