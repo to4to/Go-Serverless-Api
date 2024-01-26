@@ -25,7 +25,8 @@ func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynam
 
 
 
-func CreateUser(){}
+func CreateUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
+(*events.APIGatewayProxyResponse,error){}
 
 
 
