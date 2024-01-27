@@ -19,7 +19,7 @@ type ErrorBody struct{
 func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
 (*events.APIGatewayProxyResponse,error){
 
-
+email :=req.Q
 
 }
 
