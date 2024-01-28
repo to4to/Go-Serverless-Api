@@ -17,16 +17,20 @@ type ErrorBody struct{
 }
 
 func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
-(*events.APIGatewayProxyResponse,error){
+(*events.APIGatewayProxyResponse,error)
+{
 
-email :=req.Q
+email :=req.Query
 
 }
 
 
 
 func CreateUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
-(*events.APIGatewayProxyResponse,error){}
+(*events.APIGatewayProxyResponse,error)
+{
+
+}
 
 
 
