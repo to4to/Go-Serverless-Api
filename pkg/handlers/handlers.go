@@ -20,7 +20,7 @@ func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynam
 (*events.APIGatewayProxyResponse,error)
 {
 
-email :=req.Query
+email :=req.QueryStringParameters["email"]
 
 }
 
