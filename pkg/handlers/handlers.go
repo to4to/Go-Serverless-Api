@@ -16,13 +16,16 @@ type ErrorBody struct{
 	ErrorMsg *string `json:"error,ommitempty" `
 }
 
-func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
-(*events.APIGatewayProxyResponse,error)
-{
+// func GetUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)
+// (*events.APIGatewayProxyResponse,error)
 
-email :=req.QueryStringParameters["email"]
+func GetUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*events.APIGatewayProxyResponse, error) {
+    email :=req.QueryStringParameters["email"]
 
 }
+
+
+
 
 
 
