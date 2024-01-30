@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 	"github.com/to4to/go-serverless-api/pkg/user"
 )
@@ -23,7 +24,10 @@ type ErrorBody struct{
 func GetUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*events.APIGatewayProxyResponse, error) {
     email :=req.QueryStringParameters["email"]
 	if len(email)>0{
-		user.FetchUser(email,tableName,dynaClient)
+		result,err:=user.FetchUser(email,tableName,dynaClient)
+		if err!=nil{
+			return apiResponse(http.StatusBadRequest,ErrorBody{aws.String(err.Error())})
+		}
 	}
 
 }
