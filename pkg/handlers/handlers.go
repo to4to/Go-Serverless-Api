@@ -30,7 +30,7 @@ func GetUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dyn
 		}
 		return apiResponse(http.StatusOK,result)
 	}
-
+result,err=user.FetchUsers(tableName,dynaClient)
 }
 
 
