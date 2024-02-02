@@ -9,12 +9,9 @@ import (
 	"github.com/to4to/go-serverless-api/pkg/user"
 )
 
+var ErrorMethodNotAllowed = "method not allowed"
 
-
-var ErrorMethodNotAllowed="method not allowed"
-
-
-type ErrorBody struct{
+type ErrorBody struct {
 	ErrorMsg *string `json:"error,ommitempty" `
 }
 
@@ -22,41 +19,34 @@ type ErrorBody struct{
 // (*events.APIGatewayProxyResponse,error)
 
 func GetUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*events.APIGatewayProxyResponse, error) {
-    email :=req.QueryStringParameters["email"]
-	if len(email)>0{
-		result, err:= user.FetchUser(email,tableName,dynaClient)
-		if err!=nil{
-			return apiResponse(http.StatusBadRequest,ErrorBody{aws.String(err.Error())})
+	email := req.QueryStringParameters["email"]
+	if len(email) > 0 {
+		result, err := user.FetchUser(email, tableName, dynaClient)
+		if err != nil {
+			return apiResponse(http.StatusBadRequest, ErrorBody{aws.String(err.Error())})
 		}
-		return apiResponse(http.StatusOK,result)
+		return apiResponse(http.StatusOK, result)
 	}
-result,err=user.FetchUsers(tableName,dynaClient)
-if err!=nil{
-	return apiResponse(http.StatusBadRequest,ErrorBody{aws.String(err.Error())})
+	result, err := user.FetchUsers(tableName, dynaClient)
+	if err != nil {
+		return apiResponse(http.StatusBadRequest, ErrorBody{aws.String(err.Error())})
+	}
+	return nil, nil // Add a return statement here
 }
-}
 
-
-
-
-
-
-func CreateUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)(*events.APIGatewayProxyResponse,error){
-
+func CreateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*events.APIGatewayProxyResponse, error) {
 
 }
 
+func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*events.APIGatewayProxyResponse, error) {
+}
 
-
-func UpdateUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)(*events.APIGatewayProxyResponse,error){}
-
-func DeleteUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI)(*events.APIGatewayProxyResponse,error){
+func DeleteUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*events.APIGatewayProxyResponse, error) {
 
 }
 
+func UnhandledMethod() (*events.APIGatewayProxyResponse, error) {
 
-func UnhandledMethod()(*events.APIGatewayProxyResponse,error){
-
-return apiResponse(http.StatusMethodNotAllowed,ErrorMethodNotAllowed)
+	return apiResponse(http.StatusMethodNotAllowed, ErrorMethodNotAllowed)
 
 }
