@@ -1,6 +1,14 @@
 package user
 
+
+
+
+type User struct{}
+
 var ()
+
+
+
 
 func FetchUser() {
 
