@@ -3,7 +3,11 @@ package user
 
 
 
-type User struct{}
+type User struct{
+	Email string `json:"email"`
+	FirstName string `json:"firstName"`
+	LastName string `json:"lastName`
+}
 
 var ()
 
