@@ -1,7 +1,6 @@
 package user
 
 import (
-
 	"encoding/json"
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
@@ -9,7 +8,10 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 )
 
-var ()
+var (
+
+	ErrorFailedToFetchRecord="Failed To Fetch Record"
+)
 
 type User struct {
 	Email     string `json:"email"`
@@ -17,14 +19,23 @@ type User struct {
 	LastName  string `json:"lastName`
 }
 
-func FetchUser(email,tableName string,dynalient dynamodbiface.DynamoDBAPI)(*User,error) {
-input:=&dynamodb.GetItemInput{
-	Key: map[string]*dynamodb.AttributeValue{
-		email:{
-			s:aws.String(email),
-		}
-	},
+func FetchUser(email, tableName string, dynalient dynamodbiface.DynamoDBAPI) (*User, error) {
+	input := &dynamodb.GetItemInput{
+		Key: map[string]*dynamodb.AttributeValue{
+			email: {
+				S: aws.String(email),
+			},
+		},
+		TableName: aws.String(tableName),
+	}
+
+	result, err := dynalient.GetItem(input)
+
+	if err != nil {
+
+	return nil,errors.New(ErrorFailedToFetchRecord)
 }
+
 }
 
 // Fetching Multiple USers
