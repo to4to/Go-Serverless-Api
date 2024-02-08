@@ -17,7 +17,7 @@ var (
 type User struct {
 	Email     string `json:"email"`
 	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName`
+	LastName  string `json:"lastName"`
 }
 
 func FetchUser(email, tableName string, dynalient dynamodbiface.DynamoDBAPI) (*User, error) {
