@@ -12,6 +12,8 @@ import (
 var (
 
 	ErrorFailedToFetchRecord="Failed To Fetch Record"
+
+	ErrorFailedToUnMArshalRecord="Failed To UnMrashal"
 )
 
 type User struct {
@@ -43,7 +45,7 @@ err=dynamodbattribute.UnmarshalMap(result.Item,item)
 
 
 if err!=nil{
-
+return nil,errors.New(ErrorFailedToUnMArshalRecord)
 }
 
 
