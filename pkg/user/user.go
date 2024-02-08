@@ -1,10 +1,11 @@
 package user
 
 import (
-	"encoding/json"
 	"errors"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 )
 
@@ -35,6 +36,16 @@ func FetchUser(email, tableName string, dynalient dynamodbiface.DynamoDBAPI) (*U
 
 	return nil,errors.New(ErrorFailedToFetchRecord)
 }
+
+item :=new(User)
+
+err=dynamodbattribute.UnmarshalMap(result.Item,item)
+
+
+if err!=nil{
+
+}
+
 
 }
 
