@@ -1,6 +1,10 @@
 package user
 
 import (
+
+	"encoding/json"
+	"errors"
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 )
@@ -15,7 +19,11 @@ type User struct {
 
 func FetchUser(email,tableName string,dynalient dynamodbiface.DynamoDBAPI)(*User,error) {
 input:=&dynamodb.GetItemInput{
-	Key: map[],
+	Key: map[string]*dynamodb.AttributeValue{
+		email:{
+			s:aws.String(email),
+		}
+	},
 }
 }
 
