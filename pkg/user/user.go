@@ -10,10 +10,9 @@ import (
 )
 
 var (
+	ErrorFailedToFetchRecord = "Failed To Fetch Record"
 
-	ErrorFailedToFetchRecord="Failed To Fetch Record"
-
-	ErrorFailedToUnMArshalRecord="Failed To UnMrashal"
+	ErrorFailedToUnMArshalRecord = "Failed To UnMrashal"
 )
 
 type User struct {
@@ -22,7 +21,7 @@ type User struct {
 	LastName  string `json:"lastName"`
 }
 
-func FetchUser(email, tableName string, dynalient dynamodbiface.DynamoDBAPI) (*User, error) {
+func FetchUser(email, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*User, error) {
 	input := &dynamodb.GetItemInput{
 		Key: map[string]*dynamodb.AttributeValue{
 			email: {
@@ -36,23 +35,25 @@ func FetchUser(email, tableName string, dynalient dynamodbiface.DynamoDBAPI) (*U
 
 	if err != nil {
 
-	return nil,errors.New(ErrorFailedToFetchRecord)
-}
+		return nil, errors.New(ErrorFailedToFetchRecord)
+	}
 
-item :=new(User)
+	item := new(User)
 
-err=dynamodbattribute.UnmarshalMap(result.Item,item)
+	err = dynamodbattribute.UnmarshalMap(result.Item, item)
 
-
-if err!=nil{
-return nil,errors.New(ErrorFailedToUnMArshalRecord)
-}
-
+	if err != nil {
+		return nil, errors.New(ErrorFailedToUnMArshalRecord)
+	}
+	return item, nil
 
 }
 
 // Fetching Multiple USers
-func FetchUsers() {
+func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI) *[]User {
+	input := &dynamodb.ScanInput{
+		TableName: aws.String(tableName),
+	}
 
 }
 
