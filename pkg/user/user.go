@@ -54,7 +54,7 @@ func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI) *[]User 
 	input := &dynamodb.ScanInput{
 		TableName: aws.String(tableName),
 	}
-dynaClient.Scan(input)
+	result,err:= dynaClient.Scan(input)
 }
 
 func CreateUser() {
