@@ -59,6 +59,7 @@ func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*[]User
 
 		return nil, errors.New(ErrorFailedToFetchRecord)
 	}
+	item:=new([]User)
 }
 
 func CreateUser() {
