@@ -50,11 +50,15 @@ func FetchUser(email, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*
 }
 
 // Fetching Multiple USers
-func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI) *[]User {
+func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*[]User,error) {
 	input := &dynamodb.ScanInput{
 		TableName: aws.String(tableName),
 	}
 	result,err:= dynaClient.Scan(input)
+	if err!=nil{
+
+		return nil, errors.New(ErrorFailedToFetchRecord)
+	}
 }
 
 func CreateUser() {
