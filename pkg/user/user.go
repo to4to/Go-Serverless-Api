@@ -76,7 +76,7 @@ func CreateUser() {
 
 }
 
-func UpdateMethod() {
+func UpdateUser() {
 
 }
 
