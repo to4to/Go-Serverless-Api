@@ -3,6 +3,7 @@ package user
 import (
 	"errors"
 
+	
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
@@ -31,7 +32,7 @@ func FetchUser(email, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*
 		TableName: aws.String(tableName),
 	}
 
-	result, err := dynalient.GetItem(input)
+	result, err := dynaClient.GetItem(input)
 
 	if err != nil {
 
