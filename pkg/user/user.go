@@ -103,7 +103,12 @@ func CreateUser(req events.APIGatewayProxyResponse, tableName string, dynaClient
 			TableName: aws.String(tableName),
 		}
 
-	_,err=dynaClient.PutItem(input)
+	_, err = dynaClient.PutItem(input)
+
+	if err != nil {
+		return nil, errors.New(ErrorCouldNotDynamoPutItem)
+	}
+	return&u,nil
 }
 
 func UpdateUser() {
