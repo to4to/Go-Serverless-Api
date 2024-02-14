@@ -12,5 +12,5 @@ func IsEmailValid(email string) bool {
 		return false
 
 	}
-
+return true
 }
