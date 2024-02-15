@@ -111,7 +111,7 @@ func CreateUser(req events.APIGatewayProxyResponse, tableName string, dynaClient
 	return&u,nil
 }
 
-func UpdateUser() {
+func UpdateUser(req events.APIGatewayProxyRequest, tableName string,dynaClient dynamodbiface.DynamoDBAPI) {
 
 }
 
