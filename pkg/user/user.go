@@ -108,10 +108,10 @@ func CreateUser(req events.APIGatewayProxyResponse, tableName string, dynaClient
 	if err != nil {
 		return nil, errors.New(ErrorCouldNotDynamoPutItem)
 	}
-	return&u,nil
+	return &u, nil
 }
 
-func UpdateUser(req events.APIGatewayProxyRequest, tableName string,dynaClient dynamodbiface.DynamoDBAPI) {
+func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*User, error) {
 
 }
 
