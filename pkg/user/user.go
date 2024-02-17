@@ -112,6 +112,11 @@ func CreateUser(req events.APIGatewayProxyResponse, tableName string, dynaClient
 }
 
 func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*User, error) {
+	var u User
+
+	if err:=json.Unmarshal([]byte(req.Body),&u);err != nil {
+
+	}
 
 }
 
