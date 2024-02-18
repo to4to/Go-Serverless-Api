@@ -115,10 +115,10 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 	var u User
 
 	if err := json.Unmarshal([]byte(req.Body), &u); err != nil {
-return nil,errors.New(ErrorInvalidEmail)
+		return nil, errors.New(ErrorInvalidEmail)
 	}
 
-	
+ currentUSer,_:=	FetchUser(u.Email, tableName,dynaClient)
 
 }
 
