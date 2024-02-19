@@ -127,6 +127,11 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 	}
 	av,err:=dynamodbattribute.MarshalMap(u)
 
+
+	if err!=nil{
+		return nil,errors.New(ErrorCouldNotMarshalItem)
+	}
+
 }
 
 func DeleteUser() error {
