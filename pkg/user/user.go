@@ -140,7 +140,7 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 		
 	}
 
-	dynaClient.PutItem(input)
+	_,err=dynaClient.PutItem(input)
 
 
 	if err!=nil{
