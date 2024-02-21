@@ -150,7 +150,7 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 	return &u,nil
 }
 
-func DeleteUser(req events.APIGatewayProxyRequest) error {
+func DeleteUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI) error {
 
 	return nil
 }
