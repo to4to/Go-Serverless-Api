@@ -125,32 +125,38 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 		return nil, errors.New(ErrorUserDoesNotExist)
 
 	}
-	av,err:=dynamodbattribute.MarshalMap(u)
+	av, err := dynamodbattribute.MarshalMap(u)
 
-
-	if err!=nil{
-		return nil,errors.New(ErrorCouldNotMarshalItem)
+	if err != nil {
+		return nil, errors.New(ErrorCouldNotMarshalItem)
 	}
 
-
-
-	input:=&dynamodb.PutItemInput{
-		Item: av,
+	input := &dynamodb.PutItemInput{
+		Item:      av,
 		TableName: aws.String(tableName),
-		
 	}
 
-	_,err=dynaClient.PutItem(input)
+	_, err = dynaClient.PutItem(input)
 
-
-	if err!=nil{
-		return nil,errors.New(ErrorCouldNotDynamoPutItem)
+	if err != nil {
+		return nil, errors.New(ErrorCouldNotDynamoPutItem)
 	}
 
-	return &u,nil
+	return &u, nil
 }
 
-func DeleteUser(req events.APIGatewayProxyRequest,tableName string,dynaClient dynamodbiface.DynamoDBAPI) error {
+func DeleteUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) error {
+
+	email := req.QueryStringParameters["email"]
+
+	input := &dynamodb.DeleteItemInput{
+
+		Key: map[string]*dynamodb.AttributeValue{
+			"email": {
+				S: aws.String(email),
+			},
+		},TableName: aws.String(tableName),
+	}
 
 	return nil
 }
